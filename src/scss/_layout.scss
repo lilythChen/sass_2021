@@ -1,0 +1,32 @@
+.container {
+    @include flexBox(column, flex-start, flex-start);
+    @include boxSizing;
+    padding: 1rem;
+    background-color: $lightGay;
+    &::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #f90;
+    }
+}
+
+.box {
+    @include flexBox(column, center, flex-start);
+    width: 600px;
+    height: 200px;
+    border: 1px solid #ccc;
+    span {
+        width: 20px;
+        height: 20px;
+        background-color: #333;
+        margin: 0.2rem;
+    }
+}
+
+.grid {
+    @extend .box;
+    border: 1px solid #333;
+}
