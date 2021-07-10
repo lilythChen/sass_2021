@@ -1,32 +1,21 @@
-.container {
-    @include flexBox(column, flex-start, flex-start);
-    @include boxSizing;
-    padding: 1rem;
-    background-color: $lightGay;
-    &::before {
-        content: "";
-        display: block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #f90;
-    }
-}
+$device: 'pc', 'mobile', 'app';
 
 .box {
-    @include flexBox(column, center, flex-start);
+    @include flexBox(row, center, flex-start);
     width: 600px;
     height: 200px;
     border: 1px solid #ccc;
-    span {
-        width: 20px;
-        height: 20px;
-        background-color: #333;
-        margin: 0.2rem;
+    @each $currentDevice in $device {
+        .ui_btn_#{$currentDevice} {
+            display: block;
+            width: 80px;
+            height: 30px;
+            @for $i from 1 through 6 {
+                &[data-icon="#{$i}"] {
+                    background: url("../img/#{$currentDevice}/bottom_menu_0#{$i}.png") no-repeat;
+                    background-size: 100%;
+                }
+            }
+        }
     }
-}
-
-.grid {
-    @extend .box;
-    border: 1px solid #333;
 }
