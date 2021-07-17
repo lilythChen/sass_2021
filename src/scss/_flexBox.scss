@@ -8,3 +8,17 @@
 @mixin boxSizing {
     box-sizing: border-box;
 }
+
+@for $i from 0 through 24 {
+    .flex_#{$i} {
+        flex: $i;
+    }
+}
+
+@for $i from 1 through 20 {
+    [data-row-count="#{$i}"] {
+        .data_row {
+            width: calc(100% / #{$i});
+        }
+    }
+}
