@@ -1,5 +1,8 @@
 @import "_reset.scss";
 @import "_variable.scss";
+@import "_flexBox.scss";
+@import "_layout.scss";
+@import "_dataAttribute.scss";
 
 html {
     height: 100%;
@@ -8,41 +11,4 @@ html {
         touch-action: manipulation;
         height: 100%;
     }
-}
-
-@mixin flexBox($direction, $alignItems, $justifyContent) {
-    display: flex;
-    flex-direction: $direction;
-    align-items: $alignItems;
-    justify-content: $justifyContent;
-}
-
-@mixin boxSizing {
-    box-sizing: border-box;
-}
-
-.container {
-    @include flexBox(column, flex-start, flex-start);
-    @include boxSizing;
-    padding: 1rem;
-    background-color: $lightGay;
-    &::before {
-        content: "";
-        display: block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #f90;
-    }
-    @for $i from 0 through 4 {
-        &[data-inset="#{$i * 0.5}rem"] {
-            padding: $i * 0.5rem;
-        }
-    }
-}
-
-.grid {
-    @extend .container;
-    padding: 0.5rem;
-    justify-content: space-between;
 }

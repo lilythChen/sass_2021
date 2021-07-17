@@ -1,0 +1,21 @@
+$device: 'pc', 'mobile', 'app';
+
+.box {
+    @include flexBox(row, center, flex-start);
+    width: 600px;
+    height: 200px;
+    border: 1px solid #ccc;
+    @each $currentDevice in $device {
+        .ui_btn_#{$currentDevice} {
+            display: block;
+            width: 80px;
+            height: 30px;
+            @for $i from 1 through 6 {
+                &[data-icon="#{$i}"] {
+                    background: url("../img/#{$currentDevice}/bottom_menu_0#{$i}.png") no-repeat;
+                    background-size: 100%;
+                }
+            }
+        }
+    }
+}
