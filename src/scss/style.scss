@@ -1,8 +1,11 @@
 @import "_reset.scss";
+@import "_variable.scss";
+@import "_flexBox.scss";
+@import "_layout.scss";
+@import "_dataAttribute.scss";
 
 html {
     height: 100%;
-
     body {
         font-family: "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
         touch-action: manipulation;
