@@ -34,6 +34,16 @@
         
         &.v_center {
             @include flexBox(row, center, flex-start);
+
+            &.left {
+                justify-content: flex-start;
+            }
+            &.center {
+                justify-content: center;
+            }
+            &.right {
+                justify-content: flex-end;
+            }
         }
 
         &.h_center {
@@ -66,6 +76,16 @@
         
         &.v_center {
             @include flexBox(column, flex-start, center);
+
+            &.left {
+                align-items: flex-start;
+            }
+            &.center {
+                align-items: center;
+            }
+            &.right {
+                align-items: flex-end;
+            }
         }
 
         &.h_center {
