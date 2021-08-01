@@ -1,6 +1,5 @@
 const gulp = require('gulp')       // 載入 gulp
 const gulpSass = require('gulp-sass')  // 載入 gulp-sass
-const autoprefixer = require('gulp-autoprefixer')
 const browserSync = require('browser-sync').create()
 const connect = require('gulp-connect')
 const sourcemaps = require("gulp-sourcemaps")
