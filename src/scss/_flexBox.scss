@@ -9,14 +9,6 @@
     box-sizing: border-box;
 }
 
-// [class^="row"] {
-//     background: rgb(101, 229, 238);
-// }
-
-// [class*=" row"] {
-//     background: rgb(112, 231, 176);
-// }
-
 @for $i from 0 through 24 {
     .flex_#{$i} {
         flex: $i;

@@ -4,6 +4,12 @@
     }
 }
 
+@for $i from 0 through 4 {
+    [data-outset="#{$i * 0.5}rem"] {
+        margin: $i * 0.5rem;
+    }
+}
+
 @for $i from 0 through 100 {
     [data-width="#{$i}%"] {
         width: $i * 1%;

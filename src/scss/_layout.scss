@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;900&display=swap');
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
 .data_row {
     @include boxSizing();
     border: 1px solid #ccc;
@@ -5,16 +11,416 @@
     word-break: break-all;
 }
 
-.test {
-    width: 500px;
-    height: 300px;
-    border: 1px solid #333;
+.main {
+    background: url('/img/pc/bg.jpg') no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
-.xs-box {
+.userStatus {
+    @include boxSizing();
+    width: 350px;
+    height: 80px;
+    background: url('/img/pc/user_status_bg.png') no-repeat;
+    background-size: contain;
+    .userImage {
+        @include boxSizing();
+        border-radius: 99px;
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+        img {
+            width: 100%;
+        }
+    }
+    h6 {
+        color: $white;
+        font-size: 1rem;
+        font-weight: 400;
+        text-shadow: black 0.1em 0.1em 0.2em;
+        white-space : nowrap;
+        text-overflow : ellipsis;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .levelBar {
+        @include boxSizing();
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+        width: 80%;
+        height: 1rem;
+        border-radius: 99px;
+        background: #00000050;
+        .myLevel {
+             @include boxSizing();
+            background: #fceabb;
+            background: -moz-linear-gradient(top,  #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
+            background: -webkit-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
+            background: linear-gradient(to bottom,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 );
+            width: 70%;
+            height: 1rem;
+            border-radius: 99px;
+            p {
+                color: $white;
+                text-shadow: $lightblue 0em 0em 0.2em;
+            }
+        }
+    }
+    .star {
+        p {
+            color: #fff;
+            font-size: 1rem;
+            position: relative;
+            line-height: 40px;
+            padding-left: 40px;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 0;
+                width: 30px;
+                height: 30px;
+                background: url('/img/pc/star.svg') no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+}
+.daily {
+    width: 100%;
+    img {
+        width: 100%;
+    }
+}
+
+@mixin menulist {
+    @include boxSizing();
+    color: #ccc;
+    font-weight: 700;
+    line-height: 100px;
+    padding-left: 80px;
+    width: 100%;
+    height: 110px;
+    background-size: cover;
     display: block;
-    width: 60px;
+    position: relative;
+    &:hover {
+        background: #ffd65e;
+        background: -moz-linear-gradient(top,  #ffd65e 0%, #febf04 100%);
+        background: -webkit-linear-gradient(top,  #ffd65e 0%,#febf04 100%);
+        background: linear-gradient(to bottom,  #ffd65e 0%,#febf04 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=0 );
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+.menuBox {
+    li {
+        background: url('/img/pc/quest_bg.png') no-repeat;
+        background-size: contain;
+        font-size: 1.5rem;
+        
+        a {
+            @include menulist;    
+        }
+    }
+    .fish_1 a {
+        &::before {
+            background: url('/img/pc/get_reward_btn.png') no-repeat;
+            content: '';
+            width: 60px;
+            height: 30px;
+            background-size: cover;
+            top: 35px;
+        }
+        background: #ffd65e;
+        background: -moz-linear-gradient(top,  #ffd65e 0%, #febf04 100%);
+        background: -webkit-linear-gradient(top,  #ffd65e 0%,#febf04 100%);
+        background: linear-gradient(to bottom,  #ffd65e 0%,#febf04 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=0 );
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+$lists: fish_1, fish_2, fish_3, treasurebox;
+
+@each $mylist in $lists {
+    .#{$mylist} a {
+        &::before {
+            background: url('/img/pc/lock.png') no-repeat;
+            content: '';
+            width: 50px;
+            height: 50px;
+            display: block;
+            position: absolute;
+            background-size: contain;
+            top: 30px;
+            left: 15px;
+        }
+        &::after {
+            background: url('/img/pc/#{$mylist}.png') no-repeat;
+            content: '';
+            width: 120px;
+            height: 120px;
+            display: block;
+            position: absolute;
+            background-size: contain;
+            top: 0;
+            right: -30px;
+        }   
+    }
+}
+
+.dialog {
+    @include boxSizing();
+    border: 1px solid #072e47;
+    background: #071824;
+    width: 500px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 250px;
+    p {
+        width: calc(100% - 80px);
+        @include boxSizing();
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 40px;
+        padding-left: 60px;
+        position: relative;
+        &::before {
+            content: '';
+            width: 45px;
+            height: 30px;
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: $white;
+            font-size: 18px;
+            text-shadow: 0 0 1px black;
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    }
+
+    .mysystem {
+        color: $mysystem;
+        &::before {
+            content: '系統';
+            background: #f1e767;
+            background: -moz-linear-gradient(top,  #f1e767 0%, #feb645 100%);
+            background: -webkit-linear-gradient(top,  #f1e767 0%,#feb645 100%);
+            background: linear-gradient(to bottom,  #f1e767 0%,#feb645 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 );
+        }
+    }
+    .world {
+        color: $white;
+        &::before {
+            content: '世界';
+            background: #499bea;
+            background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%);
+            background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%);
+            background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 );
+        }
+        .name {
+            color: $worldName;
+        }
+        .monster {
+            color: $monsterName;
+        }
+    }
+    .ship {
+        color: #fff;
+        &::before {
+            content: '船隊';
+            background: #ff3019;
+            background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%);
+            background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%);
+            background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 );    
+        }
+        .name {
+            color: $shipName;
+        }
+    }
+
+    .scrollUp {
+        background: url('/img/pc/icon_arrow_up.svg') no-repeat;
+        width: 50px;
+        height: 50px;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .setting {
+        background: url('/img/pc/icon_config.svg') no-repeat;
+        width: 50px;
+        height: 50px;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+    }
+    .messegeBox {
+        border-radius: 5px;
+        background: #032e39;
+        border: transparent;
+        width: calc(100% - 80px);
+        height: 46px;
+        position: absolute;
+        bottom: 3px;
+        left: 0;
+        padding-left: 10px;
+        input {
+            width: calc(100% - 50px);
+            height: 46px;
+            line-height: 46px;
+            font-size: 20px;
+            border: transparent;
+            background: transparent;
+            color: #fff;
+        }
+        #sent {
+            margin-top: 15px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 9px 0 9px 22.5px;
+            border-color: transparent transparent transparent #2c5b75;
+        }
+    }
+}
+.coinBox {
+    min-width: 200px;
+    float: left;
     height: 60px;
-    background: #333;
-    margin: 0.5rem;
+    position: relative;
+    margin-left: 40px;
+    margin-top: 40px;
+    .coin {
+        float: left;
+        background: url('/img/pc/coin.svg');
+        width: 60px;
+        height: 60px;
+        position: absolute;
+    }
+    .money {
+        float: left;
+        border: 1px solid #055a96;
+        border-left: 0;
+        border-radius: 10px;
+        min-width: 200px;
+        height: 40px;
+        margin-top: 10px;
+        p {
+            font-size: 24px;
+            color: $white;
+            line-height: 40px;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: 900;
+        }
+    }
+}
+.bigMenu {
+    float: right;
+    li {
+        float: left;
+        a {
+            display: block;
+            width: 180px;
+            height: 200px;
+            position: relative;
+            p {
+                font-size: 26px;
+                background: #fccd4d;
+                background: -moz-linear-gradient(top,  #fccd4d 0%, #fceabb 28%, #f8b500 71%, #fbdf93 100%);
+                background: -webkit-linear-gradient(top,  #fccd4d 0%,#fceabb 28%,#f8b500 71%,#fbdf93 100%);
+                background: linear-gradient(to bottom,  #fccd4d 0%,#fceabb 28%,#f8b500 71%,#fbdf93 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fccd4d', endColorstr='#fbdf93',GradientType=0 );
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                font-weight: 900;
+            }
+            span.number {
+                display: block;
+                position: absolute;
+                background: url('/img/pc/count_bg.svg') no-repeat;
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+                font-weight: 900;
+                color: $white;
+                line-height: 30px;
+                padding-left: 10px;
+                top: 140px;
+                right: 30px;
+            }
+            span.new {
+                display: block;
+                position: absolute;
+                background: url('/img/pc/new.svg') no-repeat;
+                width: 60px;
+                height: 20px;
+                top: 140px;
+                right: 5px;
+            }
+        }
+    }
+    @for $number from 1 to 6 {
+        .top_menu_0#{$number} {
+            background: url('/img/pc/top_menu_0#{$number}.png') no-repeat;
+            background-size: cover;
+        }
+    }
+}
+
+.bigbigMenu {
+    float: right;
+    width: 90%;
+    div {
+        float: left;
+        width: 33.3%;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.bottomMenu {
+    width: 1200px;
+    height: 70px;
+    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    li {
+        float: left;
+        height: 100%;
+        overflow: hidden;
+        width: (100% / 6);
+    }
+
+     @for $bottomMenu from 1 to 7 {
+        .bottom_menu_0#{$bottomMenu} {
+            background: url('/img/pc/bottom_menu_0#{$bottomMenu}.png') no-repeat;
+            background-size: cover;
+            display: block;
+            height: 70px;
+            &:hover {
+                -webkit-filter: contrast(150%); /* Safari */
+                filter: contrast(150%);
+            }
+        }
+    }
 }
